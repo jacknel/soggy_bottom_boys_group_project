@@ -1,6 +1,6 @@
 # soggy_bottom_boys_group_project
 
-## TITTLE
+## TITLE
 
 ## Discription
 
@@ -53,8 +53,8 @@ SOFTWARE.
 
 
 
-
-***Criteria
+---
+###Criteria
 Technical Acceptance Criteria: 25%
 Satisfies the following code requirements:
     Application uses at least two server-side APIs (Links to an external site.).
