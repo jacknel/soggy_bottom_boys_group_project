@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTaEB</title>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link rel="stylesheet" href="./assets/css/styles.css">
+     <!-- #757575 grey darken-1 -->
+     <!-- #000000 black -->
+     <!-- #7cb342 light-green darken-1 -->
+     <!-- #b2ebf2 cyan lighten-4 -->
+</head>
+<body class="grey darken-1">
+    <nav>
+        <div class="nav-wrapper light-green darken-1">
+          <a href="#" class="brand-logo left">Flight Club</a>
+          <ul id="nav-mobile" class="right">
+            <li><a href="">track flight</a></li>
+            <li><a href="">browse entertainment</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+
+        <div class="row">
+
+            <div class="col s11 m6 l5"> <!-- flight column -->
+                <form>
+                    <div class="input-field white-text white">
+                      <input id="search" type="search" required>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                      <i class="material-icons">x</i>
+                    </div>
+                  </form>
+
+                  
+                <div class=""> <!-- flight column heading -->
+                    <div class="card light-green darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">Flight</span>
+                            <p>Flight info blha </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card large light-green darken-1"> <!-- flight column info -->
+                    <div class="card-image">
+                        <img src="./assets/images/plane-holder.jpg" alt="" class="height-auto">
+                    </div>
+                    <div class="card-title white-text">
+                        <h4>DFW -> JFK</h4>
+                        <p>Flight Details</p>
+                        <div class="center green lighten-1">On-Time</div>
+                        <div class="center lime lighten-1 hide">Delayed</div>
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="col s2 hide-on-med-and-down">
+                <p><strong>OR</strong></p>
+            </div>
+
+            <div class="col s11 m6 l5"> <!-- entertainment info column -->
+                <form>
+                    <div class="input-field white">
+                      <input id="search" type="search" required>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                      <i class="material-icons">x</i>
+                    </div>
+                  </form>
+
+                  <div class=""> <!-- entertainment column heading -->
+                    <div class="card light-green darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">We found <span id="result-count">#</span> Results!</span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="card light-green darken-1">
+                    <div class="card-content white-text">
+                      <span class="card-title">Entertainment Name</span>
+                      <p>Entertainment Details</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#" class="yellow-text">Book Now!</a>
+                    </div>
+                  </div>
+
+                  
+            </div>
+
+        </div> <!-- div row close -->
+
+      </div> <!-- div container close -->
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
