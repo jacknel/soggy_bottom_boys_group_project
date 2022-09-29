@@ -1,18 +1,21 @@
 
-const apiKey = 'f760c7ee5a3ea340b8611f93e0d3414d'
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c7285d3659msh3dd7c4d20367162p17ebc9jsn9122b7f2e83c',
+		'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
+	}
+};
 
-//retreieve flight information
 
-const getFlightInformation = (number) => {
-    const URL = 'http://api.aviationstack.com/v1/flights'
-    const FULL_URL = `${URL}?access_key=${apiKey}&flight_number=${number}&flight_status=active`
-    const flightTracker = fetch(FULL_URL);
-    flightTracker.then((response) => {
+
+const hotelListing = (city) => {
+    const URL = `https://hotels4.p.rapidapi.com/locations/v2/search?query=${city}&locale=en_US&currency=USD`
+    const hotelInfo = fetch(URL, options)
+    hotelInfo.then(response => {
     return response.json();
-    
-    }).then(response => console.log(response))
+    })
+    .then(response => console.log(response))
 }
-getFlightInformation(1355)
 
-
-
+hotelListing('Dallas')
