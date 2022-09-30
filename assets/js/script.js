@@ -1,6 +1,9 @@
 // FETCH "FOOD RECIPE" API
-const foodRecipe = (food) => {
-    const URL = `https://edamam-recipe-search.p.rapidapi.com/search?q=${food}`
+const foodInput = document.getElementById('search-food');
+const foodForm = document.getElementById('foodForm')
+
+const foodRecipe = (foodInput) => {
+    const URL = `https://edamam-recipe-search.p.rapidapi.com/search?q=${foodInput}`
     const optionsFood = {
         method: 'GET',
         headers: {
@@ -15,7 +18,13 @@ const foodRecipe = (food) => {
     .then(response => console.log(response))
 }
 
-foodRecipe('pizza')
 
 
+foodForm.addEventListener("submit", function(event){
+    event.preventDefault()
+    event.stopPropagation()
+    console.log(foodInput.value)
+    foodRecipe(foodInput.value)
+})
 
+console.log(foodInput)

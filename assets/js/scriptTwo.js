@@ -1,6 +1,8 @@
 // FETCH "COCKTAIL RECIPE" API
-cocktailRecipe = (alcohol) => {
-     const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${alcohol}`
+
+
+const cocktailRecipe = (drinkInput) => {
+     const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`
      const optionsDrink = {
         method: 'GET',
         headers: {
@@ -15,4 +17,5 @@ cocktailRecipe = (alcohol) => {
         .then(response => console.log(response))
 }
 
-    cocktailRecipe('vodka')
+const drinkInput = document.getElementById("searchDrink").value;
+cocktailRecipe(drinkInput)
