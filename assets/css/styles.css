@@ -1,0 +1,19 @@
+#logo {
+    margin-left: 20px;
+}
+
+#foodcol, #drinkcol {
+    margin-top: 50px;
+}
+
+#orcol {
+    margin-top:150px;
+}
+
+#timerrow {
+    padding-top: 10px;
+}
+
+#itemone, #itemtwo {
+    padding: 5px 0 5px 0;
+}
