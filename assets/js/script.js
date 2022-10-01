@@ -2,12 +2,6 @@
 const foodInput = document.getElementById('search-food');
 const foodForm = document.getElementById('foodForm');
 
-const foodIng = document.getElementById('foodIng');
-const foodIngOne = document.getElementById('foodIngOne');
-const foodIngTwo = document.getElementById('foodIngTwo');
-const foodCal = document.getElementById('foodCal');
-const foodTime = document.getElementById('foodTime');
-
 
 const foodRecipe = (foodInput) => {
     const URL = `https://edamam-recipe-search.p.rapidapi.com/search?q=${foodInput}`
@@ -38,10 +32,11 @@ const foodRecipe = (foodInput) => {
             <span class="card-title"></span>
             </div>
             <div id="card-info"  class="card-content white-text">
-                <span class="card-title">Recipe Name</span>
+                <span class="card-title">${recipe.label}</span>
                 <div id="foodIng"><p id="itemone"></p></div>
                 <div id="foodIngOne"><p id="itemone"></p></div>
                 <div id="foodIngTwo"><p id="itemone"></p></div>
+                <div  id="url"><a href="${recipe.url}" target="_blank">Link to Recipe</a></div>
                 <p id="itemtwo foocCal">${Math.round(recipe.calories)} Calories</p>
                 
                 <div class="row" id="timerrow">
