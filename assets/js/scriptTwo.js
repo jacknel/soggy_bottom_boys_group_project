@@ -97,15 +97,26 @@ const drinkForm = document.getElementById('drinkForm');
 // cocktailRecipe(drinkInput)
 
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-		'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
-	}
-};
+//const DrinksRecipe = (Drinksinput) => {
+	//const URL = `https://the-cocktail-db.p.rapidapi.com/filter.php?i=${drinksinput}`
+	//const optionsDrink = {
+	//method: 'GET',
+	//headers: {
+	//	'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
+	//	'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
+	//}
+//};
+//const DrinksInfo = fetch(URL, optionsFood)
+//recipeInfo.then(response => {
+//return response.json();
+//})
 
 fetch('https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin', options)
 	.then(response => response.json())
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
+
+	const recipeInfo = fetch(URL, optionsFood)
+    DrinksInfo.then(response => {
+    return response.json();
+    });
