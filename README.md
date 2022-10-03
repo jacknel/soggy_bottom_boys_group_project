@@ -1,17 +1,28 @@
 # soggy_bottom_boys_group_project
 
 ## TITLE
+FOOD CLUB
 
 ## Discription
+The Food Club App will allow you to search both food and drink recipies. 
+By typing types of foods (for example: burger, pizza, pasta) in the search
+bar it will search for food recipies. The search will provide 6 differnt recipies
+that will display and image, recipie name, a link to directions, some basic
+nutrition Facts and (if theres information from the API) ETA of prep time.
+The app will also allow to search Alcoholic drink recipies. The search will 
+display an image, ingrediants, glass type, and intructions on how to mix.
+
+There will be a save feature that will save to local storage. Saving will populate a list 
+of the recipie names.
 
 
 ## User Story
 
 ```
-AS A traveler flyging to a destonation 
-I WANT to be able track my flight and its location
-AND I WANT to be able to search resturaunt/ hotel suggestions 
-SO I can plan my trip accordingly 
+AS A a person unfamlier to recipies OR AS someone wanting to try new recipies
+I WANT to be able to search food recipies
+AND I WANT to be able to search drink recipies
+SO I can enjoy meals and drinks that I want to enjoy
 ```
 
 link to my GitHub Repository:

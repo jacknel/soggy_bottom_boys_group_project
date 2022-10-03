@@ -25,29 +25,46 @@ const cocktailRecipe = (drinkInput) => {
 		let drinkCardColumn = document.getElementById('drinkCard-column')
 
 		let htmlStringDrink = `<div class="card light-green lighten-1">
-            <div class="card-image"> 
+            <div class="card-image" id="cocktailName"> 
             <img src="${drinkRecipe.strDrinkThumb}"/>
-            <span class="card-title"></span></div>
+            <span class="card-title"></span>
+			</div>
 			<div id="card-info"  class="card-content white-text">
                     <span class="card-title">${drinkRecipe.strDrink}</span>
                     
+					<div class="divider"></div>
+					
+					<ul>
 					<h6>Ingrediants</h6>
-					<p>${drinkRecipe.strIngredient1}</p>
-					<p>${drinkRecipe.strIngredient2}</p>
-					<p>${drinkRecipe.strIngredient3}</p>
-					<p>${drinkRecipe.strIngredient4}</p>
-					<p>${drinkRecipe.strIngredient5}</p>
-
+					<li>${drinkRecipe.strIngredient1}</li>
+					<li>${drinkRecipe.strIngredient2}</li>
+					<li>${drinkRecipe.strIngredient3}</li>
+					<li>${drinkRecipe.strIngredient4}</li>
+					<li>${drinkRecipe.strIngredient5}</li>
+					</ul>
+				
 					<p>Glass Type: ${drinkRecipe.strGlass}</p>
 					
-                  
+					<div class="divider"></div>
+					<div class="col">
                     <h6>Instructions</h6>
 					<p>${drinkRecipe.strInstructions}</p>
-					                                      
+					</div>
+
+
+
+					<div  class="right-align">
+                		<button class="btn waves-effect waves-light" type="submit" name="action">Save
+                    		<i class="material-icons right">save</i>
+                		</button>
+                	</div>
+
             </div>
-      
+			
         </div>`
 		drinkCardColumn.innerHTML += htmlStringDrink
+
+		
 				};
 
 	        })

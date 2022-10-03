@@ -25,23 +25,27 @@ const foodRecipe = (foodInput) => {
             let cardColumn = document.getElementById('card-column')
 
             let htmlString = `<div class="card light-green lighten-1">
-            <div class="card-image"> 
+            <div id="item-01">
+            <div class="card-image recipeName"> 
             <img src="${recipe.image}"/>
             <span class="card-title"></span>
             </div>
+            </div>
             <div id="card-info"  class="card-content white-text">
                 <span class="card-title">${recipe.label}</span>
-                <div id="foodIng"><p id="itemone"></p></div>
-               
+                <div class="divider"></div>
+             
                 <div  id="url"><a href="${recipe.url}" target="_blank">Link to Recipe</a></div>
-                <p>Nutriton</p>
+                
+                <div class="divider"></div>
+                <h6>Nutriton</h6>
 
-                <p>Calories: ${Math.round(recipe.calories)}</p>
+                <p id="calories">Calories: ${Math.round(recipe.calories)}</p>
                 <p>Total Fats: ${Math.round(recipe.digest[0].total)}g</p>
                 <p>Protien: ${Math.round(recipe.digest[2].total)}g</p>
                 <p>Carbs: ${Math.round(recipe.digest[1].total)}g</p>
-
-
+                
+                <div class="divider"></div>
                 <div class="row" id="timerrow">
                   <div class="col">
                     <i class="small material-icons">access_time</i>
@@ -49,12 +53,19 @@ const foodRecipe = (foodInput) => {
                   <div class="col">
                     <p id="foodTime">Prep time ${recipe.totalTime} min</p>
                   </div>
+                 
+                  
+                 
                 </div>
-                
+                <div class="right-align">
+                <button class="btn waves-effect waves-light saveRecipeBtn" type="submit" name="action">Save
+                    <i class="material-icons right">save</i>
+                </button>
+                </div>
             </div>
         </div>`
 
-            cardColumn.innerHTML += htmlString 
+            cardColumn.innerHTML += htmlString            
 
         };
     })
@@ -69,12 +80,16 @@ foodForm.addEventListener("submit", function(event){
 })
 
 
-// $(".saveBtn").click(function (event) {
-//     event.preventDefault();
-//     var value = $(this).siblings(".time-block").val();
-//     var key = $(this).parent().attr("id").split("-")[1];
-//     localStorage.setItem(key,value);
-//  });
+// application storage
+ $("#item-01.recipeName").val(localStorage.getItem("01"));
+
+
+$(".saveRecipeBtn").click(function (event) {
+    event.preventDefault();
+    var value = $(this).siblings(".recipeName").val();
+    var key = $(this).parent().attr("id").split("-")[1];
+        localStorage.setItem(key,value);
+ });
  
 // //Clear 
 //  $("#clearBtn").click(function(event) {
