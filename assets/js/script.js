@@ -65,10 +65,18 @@ const foodRecipe = (foodInput) => {
             </div>
         </div>`
 
-            cardColumn.innerHTML += htmlString            
+            cardColumn.innerHTML += htmlString                    
 
         };
+        
     })
+    
+    $(document).click(".saveRecipeBtn",function (event) {
+        event.preventDefault();        
+        var value = $(event.target).parent().siblings()[0].textContent
+        var key = "SavedFoodRecipie"
+            localStorage.setItem(key,value);        
+     });
 }
 
 foodForm.addEventListener("submit", function(event){
@@ -76,25 +84,14 @@ foodForm.addEventListener("submit", function(event){
     event.stopPropagation()
     console.log(foodInput.value)
     foodRecipe(foodInput.value)
-
 })
 
 
-// application storage
- $("#item-01.recipeName").val(localStorage.getItem("01"));
-
-
-$(".saveRecipeBtn").click(function (event) {
-    event.preventDefault();
-    var value = $(this).siblings(".recipeName").val();
-    var key = $(this).parent().attr("id").split("-")[1];
-        localStorage.setItem(key,value);
- });
  
 // //Clear 
 //  $("#clearBtn").click(function(event) {
 //     event.preventDefault;
-//     $("textArea").val("");
+//     $("").val("");
 //     localStorage.clear();
 // });
 

@@ -54,7 +54,7 @@ const cocktailRecipe = (drinkInput) => {
 
 
 					<div  class="right-align">
-                		<button class="btn waves-effect waves-light" type="submit" name="action">Save
+                		<button class="btn waves-effect waves-light saveDrinkBtn" type="submit" name="action">Save
                     		<i class="material-icons right">save</i>
                 		</button>
                 	</div>
@@ -68,11 +68,15 @@ const cocktailRecipe = (drinkInput) => {
 				};
 
 	        })
+			$(document).click(".saveDrinkBtn",function (event) {
+				event.preventDefault();        
+				var value = $(event.target).parent().siblings()[0].textContent
+				var key = "SavedDrinkRecipie"
+					localStorage.setItem(key,value);        
+			 });
 		}			
 		
-
-
-
+	
 drinkForm.addEventListener("submit", function(event){
     event.preventDefault()
     event.stopPropagation()
@@ -80,3 +84,11 @@ drinkForm.addEventListener("submit", function(event){
     cocktailRecipe(drinkInput.value)
 
 })
+
+ 
+// //Clear 
+//  $("#clearBtn").click(function(event) {
+//     event.preventDefault;
+//     $("").val("");
+//     localStorage.clear();
+// });
