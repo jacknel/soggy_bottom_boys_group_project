@@ -19,9 +19,7 @@ const foodRecipe = (foodInput) => {
     .then(response => {
         console.log(response.hits)
         const recipeArray = response.hits
-        // foodIng.innerText = response.hits[0].recipe.ingredients[0].text
-        // foodIngOne.innerText = response.hits[0].recipe.ingredients[1].text
-        // foodIngTwo.innerText = response.hits[0].recipe.ingredients[2].text
+       
         for(let i=0; i<5; i++) {
             let recipe = recipeArray[i].recipe
             let cardColumn = document.getElementById('card-column')
@@ -34,11 +32,16 @@ const foodRecipe = (foodInput) => {
             <div id="card-info"  class="card-content white-text">
                 <span class="card-title">${recipe.label}</span>
                 <div id="foodIng"><p id="itemone"></p></div>
-                <div id="foodIngOne"><p id="itemone"></p></div>
-                <div id="foodIngTwo"><p id="itemone"></p></div>
+               
                 <div  id="url"><a href="${recipe.url}" target="_blank">Link to Recipe</a></div>
-                <p id="itemtwo foocCal">${Math.round(recipe.calories)} Calories</p>
-                
+                <p>Nutriton</p>
+
+                <p>Calories: ${Math.round(recipe.calories)}</p>
+                <p>Total Fats: ${Math.round(recipe.digest[0].total)}g</p>
+                <p>Protien: ${Math.round(recipe.digest[2].total)}g</p>
+                <p>Carbs: ${Math.round(recipe.digest[1].total)}g</p>
+
+
                 <div class="row" id="timerrow">
                   <div class="col">
                     <i class="small material-icons">access_time</i>
@@ -53,14 +56,6 @@ const foodRecipe = (foodInput) => {
 
             cardColumn.innerHTML += htmlString 
 
-        // foodIng.innerText = recipeObj.recipe.ingredients[0].text
-        // foodIngOne.innerText = recipeObj.recipe.ingredients[1].text
-        // foodIngTwo.innerText = recipeObj.recipe.ingredients[2].text
-        // let imageEl = document.createElement("img")
-        // imageEl.setAttribute('src',recipeObj.recipe.image)
-        // let cardInfo = document.getElementById('card-info')
-        // cardInfo.appendChild(imageEl)
-        // console.log(response.hits)
         };
     })
 }
@@ -72,6 +67,21 @@ foodForm.addEventListener("submit", function(event){
     foodRecipe(foodInput.value)
 
 })
+
+
+// $(".saveBtn").click(function (event) {
+//     event.preventDefault();
+//     var value = $(this).siblings(".time-block").val();
+//     var key = $(this).parent().attr("id").split("-")[1];
+//     localStorage.setItem(key,value);
+//  });
+ 
+// //Clear 
+//  $("#clearBtn").click(function(event) {
+//     event.preventDefault;
+//     $("textArea").val("");
+//     localStorage.clear();
+// });
 
 
 

@@ -1,122 +1,65 @@
-// FETCH "COCKTAIL RECIPE" API
+// // FETCH "COCKTAIL RECIPE" API
 const drinkInput = document.getElementById('search-drink');
 const drinkForm = document.getElementById('drinkForm');
 
 
-// const drinkRecipe = (drinkInput) => {
-//     console.log('this function was FIRED')
-//     const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`
-//     const optionsDrink = {
-//         method: 'GET',
-//         headers: {
-//             'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-//             'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
-//         }
-//     };
-//     fetch(URL, optionsDrink)
-//         .then(response => {
-//             return response.json();
-//         })
-//         .then(response => {
-//             console.log(response)
-//             console.log(response.hits)
-//             const recipeArrayDrink = response.hits
-//             // foodIng.innerText = response.hits[0].recipe.ingredients[0].text
-//             // foodIngOne.innerText = response.hits[0].recipe.ingredients[1].text
-//             // foodIngTwo.innerText = response.hits[0].recipe.ingredients[2].text
-//             for(let i=0; i<5; i++) {
-//                 let recipe = recipeArrayDrink[i].recipe
-//                 let cardColumn = document.getElementById('card-column')
+const cocktailRecipe = (drinkInput) => {
+	const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`
+	const optionsDrink = {
+	   method: 'GET',
+	   headers: {
+		   'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
+		   'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
+	   }
+   };
+   const cocktailInfo = fetch(URL, optionsDrink)
+   cocktailInfo.then(response => {
+   return response.json();
+   })	   
+.then(response => {
+	console.log(response.drinks)
+	const drinkArray = response.drinks
 
-//                 let htmlString = `<div class="card light-green lighten-1">
-//                 <div class="card-image"> 
-//                 <img src="${recipe.image}"/>
-//                 <span class="card-title"></span>
-//                 </div>
-//                 <div id="card-info"  class="card-content white-text">
-//                     <span class="card-title">${recipe.label}</span>
-//                     <div id="foodIng"><p id="itemone"></p></div>
-//                     <div id="foodIngOne"><p id="itemone"></p></div>
-//                     <div id="foodIngTwo"><p id="itemone"></p></div>
-//                     <div  id="url"><a href="${recipe.url}" target="_blank">Link to Recipe</a></div>
-//                     <p id="itemtwo foocCal">${Math.round(recipe.calories)} Calories</p>
+	for(let i=0; i<5; i++) {
+		let drinkRecipe = drinkArray[i]
+		let drinkCardColumn = document.getElementById('drinkCard-column')
+
+		let htmlStringDrink = `<div class="card light-green lighten-1">
+            <div class="card-image"> 
+            <img src="${drinkRecipe.strDrinkThumb}"/>
+            <span class="card-title"></span></div>
+			<div id="card-info"  class="card-content white-text">
+                    <span class="card-title">${drinkRecipe.strDrink}</span>
                     
-//                     <div class="row" id="timerrow">
-//                     <div class="col">
-//                         <i class="small material-icons">access_time</i>
-//                     </div>
-//                     <div class="col">
-//                         <p id="foodTime">Prep time ${recipe.totalTime} min</p>
-//                     </div>
-//                     </div>
-                    
-//                     </div>
-//                 </div>`
+					<h6>Ingrediants</h6>
+					<p>${drinkRecipe.strIngredient1}</p>
+					<p>${drinkRecipe.strIngredient2}</p>
+					<p>${drinkRecipe.strIngredient3}</p>
+					<p>${drinkRecipe.strIngredient4}</p>
+					<p>${drinkRecipe.strIngredient5}</p>
 
-//                 cardColumn.innerHTML += htmlString 
+					<p>Glass Type: ${drinkRecipe.strGlass}</p>
+					
+                  
+                    <h6>Instructions</h6>
+					<p>${drinkRecipe.strInstructions}</p>
+					                                      
+            </div>
+      
+        </div>`
+		drinkCardColumn.innerHTML += htmlStringDrink
+				};
 
-//                 // foodIng.innerText = recipeObj.recipe.ingredients[0].text
-//                 // foodIngOne.innerText = recipeObj.recipe.ingredients[1].text
-//                 // foodIngTwo.innerText = recipeObj.recipe.ingredients[2].text
-//                 // let imageEl = document.createElement("img")
-//                 // imageEl.setAttribute('src',recipeObj.recipe.image)
-//                 // let cardInfo = document.getElementById('card-info')
-//                 // cardInfo.appendChild(imageEl)
-//                 // console.log(response.hits)
-//             };
-//         })
-// }
-
-// drinkForm.addEventListener("submit", function(event){
-//     event.preventDefault()
-//     event.stopPropagation()
-//     console.log(drinkInput.value)
-//     drinkRecipe(drinkInput.value)
-
-// })
-// const foodInput = document.getElementById('search-food');
-// const foodForm = document.getElementById('foodForm')
-
-// const cocktailRecipe = (drinkInput) => {
-//      const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`
-//      const optionsDrink = {
-//         method: 'GET',
-//         headers: {
-//             'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-//             'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
-//         }
-//     };
-//     const cocktailInfo = fetch(URL, optionsDrink)
-//     cocktailInfo.then(response => {
-//     return response.json();
-//     })
-//         .then(response => console.log(response))
-// }
-
-// const drinkInput = document.getElementById("searchDrink").value;
-// cocktailRecipe(drinkInput)
+	        })
+		}			
+		
 
 
-//const DrinksRecipe = (Drinksinput) => {
-	//const URL = `https://the-cocktail-db.p.rapidapi.com/filter.php?i=${drinksinput}`
-	//const optionsDrink = {
-	//method: 'GET',
-	//headers: {
-	//	'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-	//	'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
-	//}
-//};
-//const DrinksInfo = fetch(URL, optionsFood)
-//recipeInfo.then(response => {
-//return response.json();
-//})
 
-fetch('https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+drinkForm.addEventListener("submit", function(event){
+    event.preventDefault()
+    event.stopPropagation()
+    console.log(drinkInput.value)
+    cocktailRecipe(drinkInput.value)
 
-	const recipeInfo = fetch(URL, optionsFood)
-    DrinksInfo.then(response => {
-    return response.json();
-    });
+})
