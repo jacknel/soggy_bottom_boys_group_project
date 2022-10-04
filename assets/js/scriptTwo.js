@@ -1,30 +1,30 @@
 // // FETCH "COCKTAIL RECIPE" API
-const drinkInput = document.getElementById('search-drink');
-const drinkForm = document.getElementById('drinkForm');
-
+const drinkInput = document.getElementById("search-drink");
+const drinkForm = document.getElementById("drinkForm");
 
 const cocktailRecipe = (drinkInput) => {
-	const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`
-	const optionsDrink = {
-	   method: 'GET',
-	   headers: {
-		   'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-		   'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
-	   }
-   };
-   const cocktailInfo = fetch(URL, optionsDrink)
-   cocktailInfo.then(response => {
-   return response.json();
-   })	   
-.then(response => {
-	console.log(response.drinks)
-	const drinkArray = response.drinks
+  const URL = `https://the-cocktail-db.p.rapidapi.com/search.php?s=${drinkInput}`;
+  const optionsDrink = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0",
+      "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+    },
+  };
+  const cocktailInfo = fetch(URL, optionsDrink);
+  cocktailInfo
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      console.log(response.drinks);
+      const drinkArray = response.drinks;
 
-	for(let i=0; i<5; i++) {
-		let drinkRecipe = drinkArray[i]
-		let drinkCardColumn = document.getElementById('drinkCard-column')
+      for (let i = 0; i < 5; i++) {
+        let drinkRecipe = drinkArray[i];
+        let drinkCardColumn = document.getElementById("drinkCard-column");
 
-		let htmlStringDrink = `<div class="card light-green lighten-1">
+        let htmlStringDrink = `<div class="card light-green lighten-1">
             <div class="card-image" id="cocktailName"> 
             <img src="${drinkRecipe.strDrinkThumb}"/>
             <span class="card-title"></span>
@@ -61,32 +61,32 @@ const cocktailRecipe = (drinkInput) => {
 
             </div>
 			
-        </div>`
-		drinkCardColumn.innerHTML += htmlStringDrink
+        </div>`;
+        drinkCardColumn.innerHTML += htmlStringDrink;
 
-		
-				};
+        var savedrinkBtn = document.querySelectorAll(".saveDrinkBtn");
+        savedrinkBtn.forEach((element) => {
+          element.addEventListener("click", function (event) {
+            console.log($(event.target));
+            event.preventDefault();
+            var valueDrink = $(event.target).parent().siblings()[0].textContent;
+            console.log($(event.target).parent().siblings()[0].textContent);
+            var keyDrink = "SavedDrinkRecipie";
+            localStorage.setItem(keyDrink, valueDrink);
+          });
+        });
+      }
+    });
+};
 
-	        })
-			$(document).click(".saveDrinkBtn",function (event) {
-				event.preventDefault();        
-				var value = $(event.target).parent().siblings()[0].textContent
-				var key = "SavedDrinkRecipie"
-					localStorage.setItem(key,value);        
-			 });
-		}			
-		
-	
-drinkForm.addEventListener("submit", function(event){
-    event.preventDefault()
-    event.stopPropagation()
-    console.log(drinkInput.value)
-    cocktailRecipe(drinkInput.value)
+drinkForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  console.log(drinkInput.value);
+  cocktailRecipe(drinkInput.value);
+});
 
-})
-
- 
-// //Clear 
+// //Clear
 //  $("#clearBtn").click(function(event) {
 //     event.preventDefault;
 //     $("").val("");

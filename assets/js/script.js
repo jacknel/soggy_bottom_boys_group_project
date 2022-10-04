@@ -1,30 +1,30 @@
 // FETCH "FOOD RECIPE" API
-const foodInput = document.getElementById('search-food');
-const foodForm = document.getElementById('foodForm');
-
+const foodInput = document.getElementById("search-food");
+const foodForm = document.getElementById("foodForm");
 
 const foodRecipe = (foodInput) => {
-    const URL = `https://edamam-recipe-search.p.rapidapi.com/search?q=${foodInput}`
-    const optionsFood = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0',
-            'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
-        }
-    };
-    const recipeInfo = fetch(URL, optionsFood)
-    recipeInfo.then(response => {
-    return response.json();
+  const URL = `https://edamam-recipe-search.p.rapidapi.com/search?q=${foodInput}`;
+  const optionsFood = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "3d36bbf348msh6d60b8e2f12876dp106ce1jsn2c433989fdc0",
+      "X-RapidAPI-Host": "edamam-recipe-search.p.rapidapi.com",
+    },
+  };
+  const recipeInfo = fetch(URL, optionsFood);
+  recipeInfo
+    .then((response) => {
+      return response.json();
     })
-    .then(response => {
-        console.log(response.hits)
-        const recipeArray = response.hits
-       
-        for(let i=0; i<5; i++) {
-            let recipe = recipeArray[i].recipe
-            let cardColumn = document.getElementById('card-column')
+    .then((response) => {
+      console.log(response.hits);
+      const recipeArray = response.hits;
 
-            let htmlString = `<div class="card light-green lighten-1">
+      for (let i = 0; i < 5; i++) {
+        let recipe = recipeArray[i].recipe;
+        let cardColumn = document.getElementById("card-column");
+
+        let htmlString = `<div class="card light-green lighten-1">
             <div id="item-01">
             <div class="card-image recipeName"> 
             <img src="${recipe.image}"/>
@@ -35,7 +35,9 @@ const foodRecipe = (foodInput) => {
                 <span class="card-title">${recipe.label}</span>
                 <div class="divider"></div>
              
-                <div  id="url"><a href="${recipe.url}" target="_blank">Link to Recipe</a></div>
+                <div  id="url"><a href="${
+                  recipe.url
+                }" target="_blank">Link to Recipe</a></div>
                 
                 <div class="divider"></div>
                 <h6>Nutriton</h6>
@@ -63,40 +65,35 @@ const foodRecipe = (foodInput) => {
                 </button>
                 </div>
             </div>
-        </div>`
+        </div>`;
 
-            cardColumn.innerHTML += htmlString                    
+        cardColumn.innerHTML += htmlString;
 
-        };
-        
-    })
-    
-    $(document).click(".saveRecipeBtn",function (event) {
-        event.preventDefault();        
-        var value = $(event.target).parent().siblings()[0].textContent
-        var key = "SavedFoodRecipie"
-            localStorage.setItem(key,value);        
-     });
-}
+        var saveRecipeBtn = document.querySelectorAll(".saveRecipeBtn");
+        saveRecipeBtn.forEach((element) => {
+          element.addEventListener("click", function (event) {
+            console.log($(event.target));
+            event.preventDefault();
+            var valueFood = $(event.target).parent().siblings()[0].textContent;
+            console.log($(event.target).parent().siblings()[0].textContent);
+            var keyFood = "SavedFoodRecipie";
+            localStorage.setItem(keyFood, valueFood);
+          });
+        });
+      }
+    });
+};
 
-foodForm.addEventListener("submit", function(event){
-    event.preventDefault()
-    event.stopPropagation()
-    console.log(foodInput.value)
-    foodRecipe(foodInput.value)
-})
+foodForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+  console.log(foodInput.value);
+  foodRecipe(foodInput.value);
+});
 
-
- 
-// //Clear 
+// //Clear
 //  $("#clearBtn").click(function(event) {
 //     event.preventDefault;
 //     $("").val("");
 //     localStorage.clear();
 // });
-
-
-
-
-
-
