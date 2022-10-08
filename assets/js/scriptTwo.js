@@ -24,12 +24,12 @@ const cocktailRecipe = (drinkInput) => {
         let drinkRecipe = drinkArray[i];
         let drinkCardColumn = document.getElementById("drinkCard-column");
 
-        let htmlStringDrink = `<div class="card light-green lighten-1">
+        let htmlStringDrink = `<div class="card light-green lighten-1 z-depth-5">
             <div class="card-image" id="cocktailName"> 
             <img src="${drinkRecipe.strDrinkThumb}"/>
             <span class="card-title"></span>
 			</div>
-			<div id="card-info"  class="card-content white-text">
+			<div id="card-info"  class="card-content white-text z-depth-5">
                     <span class="card-title">${drinkRecipe.strDrink}</span>
                     
 					<div class="divider"></div>

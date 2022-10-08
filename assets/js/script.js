@@ -24,14 +24,14 @@ const foodRecipe = (foodInput) => {
         let recipe = recipeArray[i].recipe;
         let cardColumn = document.getElementById("card-column");
 
-        let htmlString = `<div class="card light-green lighten-1">
+        let htmlString = `<div class="card light-green lighten-1 z-depth-5">
             <div id="item-01">
             <div class="card-image recipeName"> 
             <img src="${recipe.image}"/>
             <span class="card-title"></span>
             </div>
             </div>
-            <div id="card-info"  class="card-content white-text">
+            <div id="card-info"  class="card-content white-text z-depth-5">
                 <span class="card-title">${recipe.label}</span>
                 <div class="divider"></div>
              
